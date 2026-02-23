@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: color-deployment
+  namespace: color-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: minaamin/color-app:v1
+        ports:
+        - containerPort: 5000
+        env:
+        - name: COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: color-config
+              key: COLOR
+        - name: password
+          valueFrom:
+            secretKeyRef:
+              name: color-secret
+              key: PASSWORD
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"

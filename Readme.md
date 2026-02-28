@@ -68,7 +68,7 @@ Add:
 http://colorapp.local
 ```
 
-![Color Pink](color-black.png)
+![Color Pink](images/color-black.png)
 
 ---
 
@@ -93,7 +93,7 @@ Then restart pods if needed:
 kubectl rollout restart deployment color-deployment -n color-app
 ```
 
-![Color Pink](color-pink.png)
+![Color Pink](images/color-pink.png)
 
 ---
 

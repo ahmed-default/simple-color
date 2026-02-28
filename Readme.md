@@ -16,7 +16,7 @@ Simple Kubernetes project to deploy a Color App using:
 Namespace: color-app  
 Inside it:
 
-- ConfigMap → defines COLOR=blue
+- ConfigMap → defines COLOR=black
 - Secret → stores PASSWORD (Base64)
 - Deployment → 3 Pods running minaamin/color-app:v1
 - Service → exposes app internally on port 80
@@ -29,7 +29,7 @@ Inside it:
 Apply the manifest file:
 
 ```bash
-kubectl apply -f color-app.yaml
+kubectl apply -f color-all.yaml
 ```
 
 Check resources:
@@ -48,7 +48,7 @@ If you are using k3s or any local Kubernetes cluster:
 
 Linux / Mac:
 ```bash
-sudo nano /etc/hosts
+sudo vim /etc/hosts
 ```
 
 Windows:
@@ -68,6 +68,8 @@ Add:
 http://colorapp.local
 ```
 
+![Color Pink](color-black.png)
+
 ---
 
 ## 🔐 Environment Variables
@@ -81,6 +83,8 @@ To change the color:
 
 ```bash
 kubectl edit configmap color-config -n color-app
+or
+vim color-config
 ```
 
 Then restart pods if needed:
@@ -88,6 +92,8 @@ Then restart pods if needed:
 ```bash
 kubectl rollout restart deployment color-deployment -n color-app
 ```
+
+![Color Pink](color-pink.png)
 
 ---
 

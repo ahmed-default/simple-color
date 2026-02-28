@@ -2,15 +2,19 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: color-app
+
 ---
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: color-config
   namespace: color-app
 data:
-  COLOR: blue
+  COLOR: black
+
 ---
+
 apiVersion: v1
 kind: Secret
 metadata:
@@ -18,7 +22,9 @@ metadata:
   namespace: color-app
 data:
   PASSWORD: bXlwYXNzd29yZA==
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,7 +63,9 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "250m"
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -70,7 +78,9 @@ spec:
   - port: 80
     targetPort: 5000
   type: ClusterIP
+
 ---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
